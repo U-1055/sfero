@@ -1,6 +1,6 @@
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-from app.extensions import db
+from backend.app.extensions import db
 
 
 class User(db.Model):
@@ -10,7 +10,6 @@ class User(db.Model):
     login = db.Column(db.String(80), unique=True, nullable=False)
     password_hash = db.Column(db.String(256), nullable=False)
 
-    # Связь: у одного пользователя может быть много задач
     tasks = db.relationship("Task", backref="author", lazy=True)
 
     def set_password(self, password: str):
@@ -28,7 +27,6 @@ class Task(db.Model):
     is_done = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    # Внешний ключ на таблицу users
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     def to_dict(self):

@@ -1,1 +1,29 @@
-/backend/.env
+# Виртуальные окружения
+venv/
+.venv/
+env/
+
+# Кэш Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Секреты и переменные окружения (шаблон .env.example оставляем в Git!)
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Локальные базы данных SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Настройки редакторов кода (PyCharm, VS Code)
+.idea/
+.vscode/
+
+# Системный мусор и логи
+.DS_Store
+Thumbs.db
+*.log
